@@ -5,23 +5,23 @@ mainDiv.addEventListener('mousemove',produceShadow);
 
 function produceShadow(e){
 
-    const {offsetWidth:width,offsetHeight:height} = mainDiv;
+    const {offsetWidth:textWidth,offsetHeight:textHeight} = mainDiv;
 
-    let {offsetX:x,offsetY:y} = e;
+    let {offsetX:mouseX,offsetY:mouseY} = e;
 
-    let xWalk = ((x / 2.5) / width * 100);
-    let yWalk = ((y / 2) / height * 100);
+    let xShadow = ((mouseX / 2.5) / textWidth * 100);
+    let yShadow = ((mouseY / 2) / textHeight * 100);
 
     if(e.target!==this){
-        x = e.offsetX  + x ;
-        y = e.offsetY + y ;
+        xShadow = ((e.offsetX)/ 50)  + xShadow ;
+        yShadow = ((e.offsetY)/ 2) + yShadow ;
     }
     
     heading.style.textShadow = 
     `
-    ${xWalk}px ${yWalk}px red ,
-    ${-xWalk}px ${yWalk}px blue ,
-    ${xWalk}px ${-yWalk}px green ,
-    ${-xWalk}px ${-yWalk}px orange 
+    ${xShadow}px ${yShadow}px red ,
+    ${-xShadow}px ${yShadow}px blue ,
+    ${xShadow}px ${-yShadow}px green ,
+    ${-xShadow}px ${-yShadow}px orange 
     `
 }
